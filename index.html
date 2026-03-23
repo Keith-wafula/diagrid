@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrid Engineering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3f2fd;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            background-color: #002f6c;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* --- The "About" Section (The Container) --- */
+        #about {
+            position: relative; /* Required to contain the absolute slideshow */
+            padding: 80px 20px;
+            text-align: center;
+            color: white; /* Text color for contrast */
+            overflow: hidden; /* Clips images to section boundaries */
+            min-height: 300px; /* Ensures a minimum size if content is short */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Fluid Slideshow (Background Only) --- */
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Sits behind the text */
+        }
+
+        .slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Keeps image fluid and fills the section */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow img.active {
+            opacity: 1;
+        }
+
+        /* --- Content Styling --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 2; /* Sits above the slideshow */
+            max-width: 800px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Makes text readable */
+            color: #010b13;
+		}
+
+        #about h2 { font-size: 2.5em; margin: 0; }
+        #about p { font-size: 1.2em; line-height: 1.6; }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer a { color: #FFD700; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Diagrid Engineering</h1>
+        <nav>
+           <a href="about.html">About Us</a>
+            <a href="ourservices.html">Services</a>
+            <a href="project.html">Projects</a>
+            <a href="conduct.html">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <div class="slideshow">
+            <img src="1.png" class="active">
+            <img src="1 (25).jpg">
+            <img src="1 (1).jpg">
+            <img src="1 (2).jpg">
+        </div>
+
+        <div class="content-wrapper">
+            <h2>About Diagrid Engineering</h2>
+            <p>Diagrid Engineering is a leading company in the construction industry, specializing in both residential and commercial projects. Our team of experts is dedicated to bringing your architectural dreams to life with precision and quality.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Diagrid Engineering | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slideshow img');
+        let current = 0;
+
+        function showNextSlide() {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }
+
+        setInterval(showNextSlide, 3000);
+    </script>
+
+</body>
+</html>
